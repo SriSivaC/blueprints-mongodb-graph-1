@@ -6,5 +6,4 @@ jdk:
   - oraclejdk8
 
 script: 
-  - "./gradlew check"
   - "./gradlew clean startManagedMongoDb test"
