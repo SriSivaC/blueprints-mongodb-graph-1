@@ -1,0 +1,39 @@
+def java_version = "1.7"
+def blueprints_version = "2.6.0"
+def mongo_driver_version = "3.0.1"
+def logback_version = "1.1.1"
+
+buildscript {
+   repositories {
+      mavenCentral()
+   }
+   dependencies {
+      classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:0.8.0'
+   }
+}
+
+apply plugin: 'mongo'
+apply plugin: 'java'
+
+sourceCompatibility = java_version
+targetCompatibility = java_version
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.tinkerpop.blueprints:blueprints-core:$blueprints_version"
+    compile "org.mongodb:mongo-java-driver:$mongo_driver_version"
+    compile "ch.qos.logback:logback-classic:$logback_version"
+
+    testCompile "com.tinkerpop.blueprints:blueprints-test:$blueprints_version"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
+
+mongo {
+    logging 'console'
+}

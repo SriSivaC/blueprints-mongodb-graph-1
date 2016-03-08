@@ -1,0 +1,8 @@
+*~
+*.jar
+.settings/*
+.gradle/*
+bin/
+build/*
+target/*
+/build/
